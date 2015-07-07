@@ -9,13 +9,6 @@ var Drink = function(name, description, price, ingredients){
 
 }
 
-Drink.prototype.create = function(){
-
-	// return $('<div class="menu-item"></div>').text(this.name +  ' ' + this.description + ' ' + this.price + ' ' + this.ingredients);
-
-}
-
-
 // Plates 
 
 var Plate = function(name, description, price, ingredients){
@@ -27,12 +20,6 @@ var Plate = function(name, description, price, ingredients){
 
 }
 
-Plate.prototype.create = function(){
-
-	// return $('<div class="menu-item"></div>').text(this.name + ' ' + this.description + ' ' + this.price + ' ' + this.ingredients)
-
-}
-
 
 // Order
 
@@ -41,13 +28,6 @@ var Order = function(plates){
 	this.plates = plates;
 
 }
-
-Order.prototype.create = function(){
-
-	// return $('<div class="order-container"></div>')
-
-}
-
 
 
 // Menu
@@ -63,11 +43,10 @@ Menu.prototype.create = function(){
 
 	this.plates.forEach(function(element){
 
-		// var itemParagraph = $('<p class="item-paragragh"></p>')
-		var itemName = $('<p class="item-paragragh"></p>').text(element.name)
-		var itemDescription = $('<p class="item-paragragh"></p>').text(element.description)
-		var itemIngredients = $('<p class="item-paragragh"></p>').text(element.ingredients)
-		var itemPrice = $('<p class="item-paragragh"></p>').text(element.price)
+		var itemName = $('<h2 class="item-paragraph"></h2>').text(element.name)
+		var itemDescription = $('<p class="item-paragraph"></p>').text(element.description)
+		var itemIngredients = $('<p class="item-paragraph"></p>').text(element.ingredients)
+		var itemPrice = $('<p class="item-paragraph"></p>').text(element.price)
 		var itemButton = $('<button class="price-button">Add to order</button>')
 
 		var menuContainer = $('<div class="menu-container"></div>').append(itemName, itemDescription, itemIngredients, itemPrice, itemButton)
@@ -114,20 +93,19 @@ Customer.prototype.create = function(){
  // each menu item renders its own container/div, which contains paragraph tags and a button.
  // Clicking on a button adds its respective menu item to the order, which tallies the price.
 
-// Below are the objects objects
+// Below are the objects 
 var whiskeyDrink = new Drink('Whiskey Drink', 'Whiskey on the rocks with lime.', 3.50, ['whiskey', 'ice', 'lime'])
 var sodaDrink = new Drink('Soda', 'Just a fresh fountain soda with ice.', 1.50, ['soda', 'ice'])
 var guacamolePlate = new Plate('Guacamole', 'Our fresh homemade guacamole.', 6.75, ['avocado', 'citrus', 'tomato', 'salt', 'onion'])
-var burritoPlate = new Plate('Burrito', 'A delightful vegan burrito for your taste buds.', 3.50, ['flour', 'rice', 'beans', 'onions', 'citrus', 'lettuce', 'tomato'])
+var burritoPlate = new Plate('Burrito', 'A delightful vegan burrito for your taste buds.', 3.50, ['flour', 'rice', 'beans', 'onions', 'lettuce', 'tomato'])
 
 var lacasitaRestaurant = new Restaurant('La Casita','Your neighbordhood pupusa place.', lacasitaMenu)
 var lacasitaMenu = new Menu([whiskeyDrink, sodaDrink, guacamolePlate, burritoPlate])
 
-// $('body').append(lacasitaRestaurant.create())
-// $('body').append(whiskeyDrink.create())
-// $('body').append(sodaDrink.create())
-// $('body').append(guacamolePlate.create())
-// $('body').append(burritoPlate.create())
+var glutenFree = new Customer('isGlutenFree');
+var vegan = new Customer('isVegan');
+var citrusFree = new Customer('isCitrusFree')
+
 
 $(document).on('ready', function(){
 	// Render restaurantContainer and restaurant.name within it
@@ -135,6 +113,8 @@ $(document).on('ready', function(){
 	// When appending a plate, we create a menu-item div, and within this div we append
 	// <p> tags for plate.name, plate.description, plate.price, plate.ingredients, AND plate.button
 	// When a button is clicked, it adds this.price to the order total price and render it to the order container
+
+
 
 	$('body').prepend(lacasitaRestaurant.create());
 
@@ -158,9 +138,6 @@ $(document).on('ready', function(){
 
 })
 
-
-
-// container.append($('<p></p))
 
 
 

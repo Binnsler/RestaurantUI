@@ -1,0 +1,20 @@
+.restaurant-container{
+	width: 60%;
+}
+
+.menu-container{
+	background-color: #a6f4e9;
+	width: 40%;
+	display: inline-block;
+	margin: 1vh .5%;
+}
+
+.item-paragraph{
+	font-size: 1.2em;
+	padding: 2vh 5%;
+}
+
+.price-button{
+	font-size: 1em;
+	margin: 1vh 5%;
+}
